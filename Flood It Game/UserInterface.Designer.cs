@@ -47,12 +47,13 @@
             this.uxNewGame.TabIndex = 0;
             this.uxNewGame.Text = "New Game";
             this.uxNewGame.UseVisualStyleBackColor = true;
+            this.uxNewGame.Click += new System.EventHandler(this.uxNewGame_Click);
             // 
             // uxBoard
             // 
-            this.uxBoard.Location = new System.Drawing.Point(156, 173);
+            this.uxBoard.Location = new System.Drawing.Point(16, 55);
             this.uxBoard.Name = "uxBoard";
-            this.uxBoard.Size = new System.Drawing.Size(200, 100);
+            this.uxBoard.Size = new System.Drawing.Size(567, 389);
             this.uxBoard.TabIndex = 1;
             // 
             // uxSizeLabel
@@ -78,7 +79,7 @@
             this.uxStatusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.uxStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uxTurns});
-            this.uxStatusStrip.Location = new System.Drawing.Point(0, 420);
+            this.uxStatusStrip.Location = new System.Drawing.Point(0, 461);
             this.uxStatusStrip.Name = "uxStatusStrip";
             this.uxStatusStrip.Size = new System.Drawing.Size(595, 30);
             this.uxStatusStrip.TabIndex = 5;
@@ -101,24 +102,24 @@
             this.uxSizeList.Name = "uxSizeList";
             this.uxSizeList.Size = new System.Drawing.Size(121, 28);
             this.uxSizeList.TabIndex = 6;
+            this.uxSizeList.Text = "14x14";
             // 
             // uxColorList
             // 
             this.uxColorList.FormattingEnabled = true;
             this.uxColorList.Items.AddRange(new object[] {
-            "6",
-            "7",
-            "8"});
+            "6"});
             this.uxColorList.Location = new System.Drawing.Point(420, 9);
             this.uxColorList.Name = "uxColorList";
             this.uxColorList.Size = new System.Drawing.Size(46, 28);
             this.uxColorList.TabIndex = 7;
+            this.uxColorList.Text = "6";
             // 
             // UserInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 450);
+            this.ClientSize = new System.Drawing.Size(595, 491);
             this.Controls.Add(this.uxColorList);
             this.Controls.Add(this.uxSizeList);
             this.Controls.Add(this.uxStatusStrip);
