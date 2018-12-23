@@ -17,6 +17,7 @@ namespace Flood_It_Game
         private int _turnsAllowed;          // Int representing the amount of turns allowed in the current game
         private int _turn = 0;             // Int representing which turn the user is on
         private int[,] _boardArray;        // 2-Dimensional array to hold numeric value of color
+        private int _colorAmount;          // Keeps track of how many 
 
 
         public UserInterface()
@@ -83,10 +84,43 @@ namespace Flood_It_Game
                             square.BackColor = Color.Yellow;
                             break;
                     }
-                    square.Name = temp.ToString();
+                    square.Name = row + "," + col;
                     square.Click += new EventHandler(Square_Click);
                     uxBoard.Controls.Add(square);
-                    //initialize turns number
+                    
+                }
+            }
+        }
+
+        private void RedrawBoard()
+        {
+            for (int row = 0; row < _boardSize; row++)
+            {
+                for (int col = 0; col < _boardSize; col++)
+                {
+                    Label square = (Label)uxBoard.Controls[row + "," + col];
+                    int temp = _boardArray[row, col];
+                    switch (temp)
+                    {
+                        case 1:
+                            square.BackColor = Color.Red;
+                            break;
+                        case 2:
+                            square.BackColor = Color.Blue;
+                            break;
+                        case 3:
+                            square.BackColor = Color.Orange;
+                            break;
+                        case 4:
+                            square.BackColor = Color.Green;
+                            break;
+                        case 5:
+                            square.BackColor = Color.Purple;
+                            break;
+                        case 6:
+                            square.BackColor = Color.Yellow;
+                            break;
+                    }
                 }
             }
         }
@@ -110,13 +144,14 @@ namespace Flood_It_Game
             }
         }
 
-        private void FloodFill(int newColor, int oldColor, int row, int col) //or "RedrawBoard()"
+        private void FloodFill(int newColor, int oldColor, int row, int col)
         {
             if (_boardArray[row, col] != oldColor)
             {
                 return;
             }
             _boardArray[row, col] = newColor;
+            _colorAmount++;
             if (row > 0)
             {
                 FloodFill(newColor, oldColor, row - 1, col);
@@ -139,7 +174,8 @@ namespace Flood_It_Game
         // gets incremented everytime flood fill algorithm goes
         private void Square_Click(object sender, EventArgs e)
         {
-            int temp = Convert.ToInt32(((Label)sender).Name);
+            string[] coords = ((Label)sender).Name.Split(',');
+            int temp = _boardArray[Convert.ToInt32(coords[0]), Convert.ToInt32(coords[1])];
             if (temp == _boardArray[0, 0])
             {
                 return;
@@ -147,26 +183,43 @@ namespace Flood_It_Game
             else
             {
                 FloodFill(temp, _boardArray[0, 0], 0, 0);
-                DrawBoard(); //redrawBoard
+                RedrawBoard(); 
                 _turn++;
-                //if won
-                    //end game
-                //else
-                    //if no more turns
+                uxTurns.Text = "Turns: " + _turn + "/" + _turnsAllowed;
+                if (CheckWin())
+                {
+                    //end gaeme
+                }
+                else
+                {
+                    if (_turnsAllowed == _turn)
+                    {
                         //end game
-                    //else
-                        
-                    
-
+                    }
+                }
             }
-                //FloodFill();
-                //If the player
+        }
+
+        private bool CheckWin()
+        {
+            if (_colorAmount == _boardSize * _boardSize)
+            {
+                return true;
+            }
+            else
+            {
+                _colorAmount = 0;
+                return false;
+            }
         }
 
         private void uxNewGame_Click(object sender, EventArgs e)
         {
             _boardSize = Convert.ToInt32(uxSizeList.Text.Substring(0,2));
+            CreateBoardArray();
             _turn = 0;
+            TurnsAllowed();
+            uxTurns.Text = "Turns: " + _turn + "/" + _turnsAllowed;
             DrawBoard();
         }
     }

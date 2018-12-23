@@ -41,9 +41,9 @@
             // 
             // uxNewGame
             // 
-            this.uxNewGame.Location = new System.Drawing.Point(480, 9);
+            this.uxNewGame.Location = new System.Drawing.Point(407, 9);
             this.uxNewGame.Name = "uxNewGame";
-            this.uxNewGame.Size = new System.Drawing.Size(103, 28);
+            this.uxNewGame.Size = new System.Drawing.Size(103, 35);
             this.uxNewGame.TabIndex = 0;
             this.uxNewGame.Text = "New Game";
             this.uxNewGame.UseVisualStyleBackColor = true;
@@ -51,9 +51,9 @@
             // 
             // uxBoard
             // 
-            this.uxBoard.Location = new System.Drawing.Point(16, 55);
+            this.uxBoard.Location = new System.Drawing.Point(16, 64);
             this.uxBoard.Name = "uxBoard";
-            this.uxBoard.Size = new System.Drawing.Size(567, 389);
+            this.uxBoard.Size = new System.Drawing.Size(567, 380);
             this.uxBoard.TabIndex = 1;
             // 
             // uxSizeLabel
@@ -68,7 +68,7 @@
             // uxColorLabel
             // 
             this.uxColorLabel.AutoSize = true;
-            this.uxColorLabel.Location = new System.Drawing.Point(270, 12);
+            this.uxColorLabel.Location = new System.Drawing.Point(213, 13);
             this.uxColorLabel.Name = "uxColorLabel";
             this.uxColorLabel.Size = new System.Drawing.Size(136, 20);
             this.uxColorLabel.TabIndex = 4;
@@ -79,7 +79,7 @@
             this.uxStatusStrip.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.uxStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uxTurns});
-            this.uxStatusStrip.Location = new System.Drawing.Point(0, 461);
+            this.uxStatusStrip.Location = new System.Drawing.Point(0, 480);
             this.uxStatusStrip.Name = "uxStatusStrip";
             this.uxStatusStrip.Size = new System.Drawing.Size(595, 30);
             this.uxStatusStrip.TabIndex = 5;
@@ -98,9 +98,9 @@
             "10x10",
             "14x14",
             "18x18"});
-            this.uxSizeList.Location = new System.Drawing.Point(135, 9);
+            this.uxSizeList.Location = new System.Drawing.Point(127, 9);
             this.uxSizeList.Name = "uxSizeList";
-            this.uxSizeList.Size = new System.Drawing.Size(121, 28);
+            this.uxSizeList.Size = new System.Drawing.Size(80, 28);
             this.uxSizeList.TabIndex = 6;
             this.uxSizeList.Text = "14x14";
             // 
@@ -109,7 +109,7 @@
             this.uxColorList.FormattingEnabled = true;
             this.uxColorList.Items.AddRange(new object[] {
             "6"});
-            this.uxColorList.Location = new System.Drawing.Point(420, 9);
+            this.uxColorList.Location = new System.Drawing.Point(355, 9);
             this.uxColorList.Name = "uxColorList";
             this.uxColorList.Size = new System.Drawing.Size(46, 28);
             this.uxColorList.TabIndex = 7;
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(595, 491);
+            this.ClientSize = new System.Drawing.Size(595, 510);
             this.Controls.Add(this.uxColorList);
             this.Controls.Add(this.uxSizeList);
             this.Controls.Add(this.uxStatusStrip);
