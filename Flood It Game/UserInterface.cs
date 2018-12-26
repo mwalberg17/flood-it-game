@@ -95,7 +95,6 @@ namespace Flood_It_Game
                     
                 }
             }
-            int oof = uxBoard.Left;
         }
 
         private void RedrawBoard()
