@@ -17,7 +17,6 @@ namespace Flood_It_Game
         private int _turnsAllowed;          // Int representing the amount of turns allowed in the current game
         private int _turn = 0;             // Int representing which turn the user is on
         private int[,] _boardArray;        // 2-Dimensional array to hold numeric value of color
-        private int _colorAmount;          // Keeps track of how many 
 
 
         public UserInterface()
@@ -45,8 +44,14 @@ namespace Flood_It_Game
 
         private void DrawBoard()
         {
+            if (_boardSize == 10)
+                uxBoard.Location = new Point(91, 118);
+            else if (_boardSize == 14)
+                uxBoard.Location = new Point(51, 78);
+            else
+                uxBoard.Location = new Point(11, 38);
             uxBoard.Width = _squareSize * _boardSize;
-            uxBoard.Height = uxBoard.Width; //maybe + _squareSize
+            uxBoard.Height = uxBoard.Width; 
             Padding pad = new Padding();
             pad.Left = 0;
             pad.Right = 0;
@@ -90,6 +95,7 @@ namespace Flood_It_Game
                     
                 }
             }
+            int oof = uxBoard.Left;
         }
 
         private void RedrawBoard()
@@ -151,7 +157,6 @@ namespace Flood_It_Game
                 return;
             }
             _boardArray[row, col] = newColor;
-            _colorAmount++;
             if (row > 0)
             {
                 FloodFill(newColor, oldColor, row - 1, col);
@@ -170,8 +175,6 @@ namespace Flood_It_Game
             }
         }
 
-        // Maybe instead of having this. Maybe keep a private counter in UserInterface that
-        // gets incremented everytime flood fill algorithm goes
         private void Square_Click(object sender, EventArgs e)
         {
             string[] coords = ((Label)sender).Name.Split(',');
@@ -188,13 +191,15 @@ namespace Flood_It_Game
                 uxTurns.Text = "Turns: " + _turn + "/" + _turnsAllowed;
                 if (CheckWin())
                 {
-                    //end gaeme
+                    uxBoard.Enabled = false;
+                    MessageBox.Show("You won!");
                 }
                 else
                 {
                     if (_turnsAllowed == _turn)
                     {
-                        //end game
+                        uxBoard.Enabled = false;
+                        MessageBox.Show("Oh no! You lost.");
                     }
                 }
             }
@@ -202,19 +207,26 @@ namespace Flood_It_Game
 
         private bool CheckWin()
         {
-            if (_colorAmount == _boardSize * _boardSize)
+            if (_boardArray[_boardSize - 1, _boardSize -1] != _boardArray[0,0])
             {
-                return true;
-            }
-            else
-            {
-                _colorAmount = 0;
                 return false;
             }
+            for (int x = 0; x < _boardSize; x++)
+            {
+                for (int y = 0; y < _boardSize; y++)
+                {
+                    if (_boardArray[x, y] != _boardArray[0, 0])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
         private void uxNewGame_Click(object sender, EventArgs e)
         {
+            uxBoard.Enabled = true;
             _boardSize = Convert.ToInt32(uxSizeList.Text.Substring(0,2));
             CreateBoardArray();
             _turn = 0;
