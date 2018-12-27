@@ -13,6 +13,9 @@ using System.Windows.Forms;
 
 namespace Flood_It_Game
 {
+    /// <summary>
+    /// Creates GUI, handles board drawing and click events.
+    /// </summary>
     public partial class UserInterface : Form
     {   
         /// <summary>
